@@ -1,17 +1,1 @@
-body {
-    background-color: black;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
 
-.container {
-    text-align: center;
-}
-
-#countdown {
-    font-size: 55em !important; /* Add !important to ensure it takes precedence */
-}
