@@ -1,13 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    flatpickr("#datepicker", {
-        enableTime: false,
-        dateFormat: "Y-m-d",
-        defaultDate: "2024-05-30",
-        onChange: function(selectedDates, dateStr, instance) {
-            updateCountdown();
-        }
-    });
-
     updateDateTime();
     setInterval(updateDateTime, 1000);
     setInterval(updateCountdown, 1000);
@@ -16,27 +7,23 @@ document.addEventListener("DOMContentLoaded", function() {
 function updateDateTime() {
     const currentDateTimeElement = document.getElementById("currentDateTime");
     const now = new Date();
-    currentDateTimeElement.innerHTML = `Current Time: ${now.toLocaleString()}`;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+    currentDateTimeElement.innerHTML = `Current: ${now.toLocaleString('en-US', options)}`;
 }
 
 function updateCountdown() {
     const countdownElement = document.getElementById("countdown");
-    const daysLeftElement = document.getElementById("daysLeft");
 
-    const selectedDate = new Date(document.getElementById("datepicker").value);
+    const targetDate = new Date("2024-05-30T00:00:00"); // May 30th, 2024
     const now = new Date();
 
-    if (selectedDate > now) {
-        const timeDifference = selectedDate - now;
+    if (targetDate > now) {
+        const timeDifference = targetDate - now;
         const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         const hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        countdownElement.innerHTML = `Countdown: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
-        daysLeftElement.innerHTML = `Days Left: ${daysLeft}`;
+        countdownElement.innerHTML = `Countdown: ${daysLeft}d ${hoursLeft}h 00m 00s`;
     } else {
-        countdownElement.innerHTML = "Please select a future date.";
-        daysLeftElement.innerHTML = "";
+        countdownElement.innerHTML = "Countdown: 0d 00h 00m 00s";
     }
 }
