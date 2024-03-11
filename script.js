@@ -23,9 +23,9 @@ function updateCountdown() {
         const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         const hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-        countdownElement.innerHTML = `Countdown: ${daysLeft}d ${hoursLeft}h 00m 00s`;
+        countdownElement.innerHTML = `Countdown: ${daysLeft}d ${hoursLeft}h`;
     } else {
-        countdownElement.innerHTML = "Countdown: 0d 00h 00m 00s";
+        countdownElement.innerHTML = "Countdown: 0d 00h";
     }
 }
 
@@ -43,11 +43,9 @@ function updateNightCountdown() {
     if (now >= nightStart && now <= nightEnd) {
         const timeDifference = nightEnd - now;
         const hoursLeft = Math.floor(timeDifference / (1000 * 60 * 60));
-        const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-        const secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        nightCountdownElement.innerHTML = `Night Countdown: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+        nightCountdownElement.innerHTML = `Night Countdown: ${hoursLeft}h`;
     } else {
-        nightCountdownElement.innerHTML = "Night Countdown: 0h 00m 00s";
+        nightCountdownElement.innerHTML = "Night Countdown: 0h";
     }
 }
