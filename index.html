@@ -22,7 +22,12 @@
         }
 
         #countdown {
-            font-size: 4em;
+            font-size: 55em !important; /* Add !important to ensure it takes precedence */
+        }
+
+        #nightCountdown {
+            color: #00ff00; /* Set the font color to green or any other visible color */
+            font-size: 2em; /* Adjust the font size as needed */
         }
     </style>
 </head>
@@ -30,6 +35,7 @@
     <div class="container">
         <div id="currentDateTime"></div>
         <div id="countdown"></div>
+        <div id="nightCountdown"></div>
     </div>
 </body>
 </html>
