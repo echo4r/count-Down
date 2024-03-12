@@ -23,11 +23,13 @@ function updateCountdown() {
         const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
         const hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-        countdownElement.innerHTML = `Countdown: ${daysLeft}d ${hoursLeft}h`;
+        // Use a span with style to change the color of hours to green
+        countdownElement.innerHTML = `Countdown: ${daysLeft}d <span style="color: green">${hoursLeft}h</span>`;
     } else {
         countdownElement.innerHTML = "Countdown: 0d 00h";
     }
 }
+
 
 function updateNightCountdown() {
     const nightCountdownElement = document.getElementById("nightCountdown");
