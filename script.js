@@ -32,22 +32,19 @@ function updateCountdown() {
 function updateNightCountdown() {
     const nightCountdownElement = document.getElementById("nightCountdown");
 
-    const nightStart = new Date();
-    nightStart.setHours(18, 0, 0); // Set to 6:00 PM
+    const nowIST = new Date();
+    nowIST.setHours(nowIST.getHours() + 5, nowIST.getMinutes() + 30, nowIST.getSeconds()); // Convert to IST
 
-    const nightEnd = new Date();
-    nightEnd.setHours(22, 0, 0); // Set to 10:00 PM
+    const nightStart = new Date(nowIST);
+    nightStart.setHours(18, 0, 0); // Set to 6:00 PM IST
 
-    const now = new Date();
+    const nightEnd = new Date(nowIST);
+    nightEnd.setHours(22, 0, 0); // Set to 10:00 PM IST
 
-    if (now >= nightStart && now <= nightEnd) {
-        const timeDifference = nightEnd - now;
+    if (nowIST >= nightStart && nowIST <= nightEnd) {
+        const timeDifference = nightEnd - nowIST;
         const hoursLeft = Math.floor(timeDifference / (1000 * 60 * 60));
         const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        nightCountdownElement.innerHTML = `Night Countdown: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
-    } else {
-        nightCountdownElement.innerHTML = "Night Countdown: 0h 00m 00s";
-    }
-}
+        nightCountdownElement.innerHTML = `Night Countdown: ${hoursLeft}h ${minutesLeft}m ${second
