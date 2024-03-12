@@ -24,7 +24,7 @@ function updateCountdown() {
         const hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
         // Use a span with style to change the color of hours to green
-        countdownElement.innerHTML = `Countdown: ${daysLeft}d <span style="color: grey">${hoursLeft}h</span>`;
+        countdownElement.innerHTML = `Countdown: ${daysLeft}d <span style="color: yellowgreen">${hoursLeft}h</span>`;
     } else {
         countdownElement.innerHTML = "Countdown: 0d 00h";
     }
