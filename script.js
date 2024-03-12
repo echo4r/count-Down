@@ -47,4 +47,8 @@ function updateNightCountdown() {
         const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-        nightCountdownElement.innerHTML = `Night Countdown: ${hoursLeft}h ${minutesLeft}m ${second
+        nightCountdownElement.innerHTML = `Night Countdown: ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+    } else {
+        nightCountdownElement.innerHTML = "Night Countdown: 0h 00m 00s";
+    }
+}
